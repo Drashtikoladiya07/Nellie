@@ -69,12 +69,14 @@ function Home() {
             <h1 className="font-semibold tracking-wider text-center font-serif text-3xl py-10">Get your nails done by a skilled nail artist</h1>
             <div className="py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 {cards.map((item, index) => (
-                    <div key={index} className="relative group overflow-hidden">
-                        <img src={item.image} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" />
-                        <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center transition-opacity duration-500 group-hover:bg-opacity-60">
-                            <h2 className="text-white text-2xl md:text-3xl font-semibold hover:text-red-400 tracking-wider">{item.title}</h2>
+                    <a href="/catalog">
+                        <div key={index} className="relative group overflow-hidden">
+                            <img src={item.image} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" />
+                            <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center transition-opacity duration-500 group-hover:bg-opacity-60">
+                                <h2 className="text-white text-2xl md:text-3xl font-semibold hover:text-red-400 tracking-wider">{item.title}</h2>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 ))}
             </div>
             <div className="py-20 tracking-widest text-center">
@@ -88,14 +90,14 @@ function Home() {
                     <div className="w-full lg:w-1/2 text-center lg:text-left px-4 py-5">
                         <h2 className="text-3xl md:text-4xl font-serif pb-4"> Get the best nails and <br /> manicure your nails</h2>
                         <p className="text-gray-700 text-lg pb-6">Aenean ullamcorper anequam. Pellentesque enimdolor, varius tincidunt mattis euneque. Curabitur atjusto sedmassa bibendum accumsan. Aliquamerat volutpat dolorerat lacinia porttitor tincidunt.</p>
-                        <a href="#" className="inline-block font-semibold text-black border-b-4 border-red-400 transition-all duration-300">READ MORE</a>
+                        <a href="/artificialnails" className="inline-block font-semibold text-black border-b-4 border-red-400 transition-all duration-300">READ MORE</a>
                     </div>
                 </div>
                 <div className="bg-pink-50 flex mt-10 lg:mx-6 md:mx-10 flex-col lg:flex-row items-center gap-10 ">
                     <div className="w-full lg:w-1/2 text-center lg:text-left lg:px-12 py-5">
                         <h2 className="text-3xl md:text-4xl font-serif pb-4">Get a new look for your nails</h2>
                         <p className="text-gray-700 text-lg pb-6">Donec quisinterdum tellus. Aliquam fringilla metus risus, vitae dictumnulla laoreet aecenas euismod nondolor bibendum. Pellentesque pulvinar laoreet dolor invarius. Nam tincidunt enim libero.</p>
-                        <a href="#" className="inline-block font-semibold text-black border-b-4 border-red-400 transition-all duration-300">READ MORE</a>
+                        <a href="/glossynails" className="inline-block font-semibold text-black border-b-4 border-red-400 transition-all duration-300">READ MORE</a>
                     </div>
                     <div className="w-full lg:w-1/2"><img src="https://nellie-theme.myshopify.com/cdn/shop/files/img-4_1280x.jpg?v=1614307170" className="w-full h-full object-cover" /></div>
                 </div>
@@ -121,6 +123,13 @@ function Home() {
                 </div>
             </div>
             <Nailgallery />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 p-20">
+                <a href="/"><img src="https://nellie-theme.myshopify.com/cdn/shop/files/client-1.png?v=1614307169"  className="py-5"/></a>
+                <a href="/"><img src="https://nellie-theme.myshopify.com/cdn/shop/files/client-2.png?v=1614307169"  className="py-5"/></a>
+                <a href="/"><img src="https://nellie-theme.myshopify.com/cdn/shop/files/client-3.png?v=1614307169"  className="py-5"/></a>
+                <a href="/"><img src="https://nellie-theme.myshopify.com/cdn/shop/files/client-4.png?v=1614307169"  className="py-5"/></a>
+                <a href="/"><img src="https://nellie-theme.myshopify.com/cdn/shop/files/client-5.png?v=1614307169"  className="py-5"/></a>
+            </div>
         </div>
     );
 };
