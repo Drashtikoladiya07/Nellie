@@ -150,10 +150,6 @@ function Foxy() {
             </div>
             <ProductTabs />
             <div className="py-10">
-                <div className="text-center">
-                    <button className="bg-red-400 text-white px-5 py-4 duration-500 rounded-full hover:bg-black"><i class="fa-solid fa-file-pen px-2"></i> Enquiry about product?</button>
-                    <h1 className="text-3xl font-serif py-10">Recommended products</h1>
-                </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6 p-6 py-5">
                     {nails.map((item, index) => (
                         <div key={index}  >

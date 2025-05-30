@@ -1,14 +1,16 @@
 import { useState } from "react";
 
-function ProductTabs () {
+function ProductTabs() {
     const [activeTab, setActiveTab] = useState("description");
+    const [isOpen, setIsOpen] = useState(false);
+    const toggleModal = () => setIsOpen(!isOpen);
 
     return (
-        <div className="w-full max-w-7xl mx-auto pb-10">
+        <div className="w-full max-w-7xl mx-auto">
             <div className="flex border-b">
-                <button className={`px-3 py-3 text-white duration-500 text-xs font-medium ${activeTab === "description" ? "border-b-2 border-red-400 bg-red-400" : "text-gray-600"}`} onClick={() => setActiveTab("description")}>Product Description</button>
-                <button className={`px-3 py-3 text-white duration-500 text-xs font-medium ${activeTab === "information" ? "border-b-2 border-red-400 bg-red-400" : "text-gray-600"}`} onClick={() => setActiveTab("information")}>Additional information</button>
-                <button className={`px-3 py-3 text-white duration-500 text-xs font-medium ${activeTab === "reviews" ? "border-b-2 border-red-400 bg-red-400" : "text-gray-600"}`} onClick={() => setActiveTab("reviews")}>Reviews</button>
+                <button className={`px-3 py-3 duration-500 text-xs font-medium ${activeTab === "description" ? "border-b-2 border-red-400 bg-red-400" : "text-gray-500"}`} onClick={() => setActiveTab("description")}>Product Description</button>
+                <button className={`px-3 py-3 duration-500 text-xs font-medium ${activeTab === "information" ? "border-b-2 border-red-400 bg-red-400" : "text-gray-500"}`} onClick={() => setActiveTab("information")}>Additional information</button>
+                <button className={`px-3 py-3 duration-500 text-xs font-medium ${activeTab === "reviews" ? "border-b-2 border-red-400 bg-red-400" : "text-gray-500"}`} onClick={() => setActiveTab("reviews")}>Reviews</button>
             </div>
             <div className="p-6 border">
                 {activeTab === "description" && (
@@ -35,12 +37,57 @@ function ProductTabs () {
                     </div>
                 )}
                 {activeTab === "reviews" && (
-                    <div className="">
-                        <h2 className="text-xl font-semibold pb-4">Customer Reviews</h2>
-                        <p className="pb-6">Based on 2 reviews</p>
-                        <button className="bg-red-400 hover:bg-black duration-500 text-white py-3 px-6 rounded-full w-full max-w-7xl">Write a review</button>
+                    <div className="py-10 px-4 md:px-0 text-center">
+                        <h2 className="text-2xl font-semibold mb-6">Customer Reviews</h2>
+                        <div className="flex justify-center items-center gap-10 py-8 max-w-5xl mx-auto">
+                            <div className="">
+                                <div className="flex text-red-400 text-xl">
+                                    {[1, 2, 3, 4, 5].map((_, index) => (
+                                        <i key={index} className="bi bi-star px-1"></i>
+                                    ))}
+                                </div>
+                                <p className="text-lg">Be the first to write a review</p>
+                            </div>
+                            <div className="flex items-center gap-4">
+                                <button className="bg-red-400 hover:bg-red-500 text-white font-bold py-3 px-6 rounded-md transition">Write a review</button>
+                            </div>
+                        </div>
                     </div>
                 )}
+            </div>
+            <div className="text-center">
+                <div className="relative">
+                    <div className="flex justify-center mt-10">
+                        <button onClick={toggleModal} className="bg-red-400 text-white px-8 py-5 rounded-full text-lg font-semibold flex items-center gap-2 hover:bg-black duration-500">
+                            <i class="fa-solid fa-file-pen px-2"></i>Enquiry about product?
+                        </button>
+                    </div>
+                    {isOpen && (
+                        <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
+                            <div className="bg-white w-[90%] md:w-[500px] rounded shadow-lg p-8 relative">
+                                <button onClick={toggleModal} className="absolute top-4 right-4 text-xl text-red-500 hover:text-red-700">&times;</button>
+                                <h2 className="text-xl font-semibold mb-6 text-center">Let us know about your query!</h2>
+                                <input type="text" placeholder="Name" className="w-full p-3 border rounded mb-4" />
+                                <input type="email" placeholder="Email" className="w-full p-3 border rounded mb-4" />
+                                <input type="tel" placeholder="Phone" className="w-full p-3 border rounded mb-4" />
+                                <textarea placeholder="Subject" className="w-full p-3 border rounded mb-4 h-32"></textarea>
+                                <div className="mb-6 flex gap-6 items-center">
+                                    <label>
+                                        <input type="radio" name="contact" className="mr-1" /> Mail
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="contact" className="mr-1" /> Phone
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="contact" className="mr-1" /> Both
+                                    </label>
+                                </div>
+                                <button className="w-full bg-red-400 text-white py-3 rounded-full font-semibold hover:bg-black duration-300">Send</button>
+                            </div>
+                        </div>
+                    )}
+                </div>
+                <h1 className="text-3xl font-serif pt-10">Recommended products</h1>
             </div>
         </div>
     );
